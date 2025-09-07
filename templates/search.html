@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Jobsheets</title>
+</head>
+<body>
+    <h1>Search Jobsheets</h1>
+    <a href="{{ url_for('index') }}">🏠 Home</a>
+    <hr>
+
+    <form method="POST">
+        <label>Customer Name contains:</label><br>
+        <input type="text" name="customer"><br><br>
+
+        <label>Phone contains:</label><br>
+        <input type="text" name="phone"><br><br>
+
+        <label>Serial contains:</label><br>
+        <input type="text" name="serial"><br><br>
+
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <h2>Results</h2>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Code</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Model</th>
+                <th>Serial</th>
+                <th>Symptom</th>
+                <th>Created At</th>
+            </tr>
+            {% for r in results %}
+            <tr>
+                <td>{{ r['code'] }}</td>
+                <td>{{ r['customer_name'] }}</td>
+                <td>{{ r['phone'] }}</td>
+                <td>{{ r['model'] }}</td>
+                <td>{{ r['serial'] }}</td>
+                <td>{{ r['symptom'] }}</td>
+                <td>{{ r['created_at'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,8 @@
+
+pip install pyinstaller
+
+pyinstaller --onefile --name PrinterJobsheet app.py
+
+
+
+dist\PrinterJobsheet.exe
